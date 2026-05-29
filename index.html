@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduHire Review</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4f46e5, #2563eb);
+      color: white;
+      padding: 70px 0;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #dbeafe;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #1d4ed8;
+    }
+
+    .btn-primary:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .hero-cards {
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 18px;
+      padding: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .info-card h3 {
+      margin-bottom: 8px;
+      font-size: 21px;
+    }
+
+    main {
+      padding: 60px 0;
+    }
+
+    section {
+      margin-bottom: 70px;
+    }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .section-top h2 {
+      font-size: 34px;
+      margin-top: 5px;
+    }
+
+    .section-top p {
+      color: #475569;
+    }
+
+    .section-label {
+      color: #4f46e5;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .muted {
+      color: #64748b;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    .tag-blue {
+      background: #eef2ff;
+      color: #4338ca;
+    }
+
+    .tag-green {
+      background: #ecfdf5;
+      color: #047857;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 14px;
+    }
+
+    .card ul li {
+      margin-bottom: 8px;
+      color: #475569;
+    }
+
+    .full-btn {
+      width: 100%;
+      margin-top: 18px;
+      background: #0f172a;
+      color: white;
+    }
+
+    .full-btn:hover {
+      background: #1e293b;
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 22px;
+      margin: 8px 0 12px;
+    }
+
+    .forms {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .form-box {
+      background: white;
+      border-radius: 18px;
+      padding: 26px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .form-box h3 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .form-box p {
+      color: #64748b;
+      margin-bottom: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #4f46e5;
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid #e2e8f0;
+      background: white;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      color: #475569;
+    }
+
+    .admin-review-card {
+      border: 1px solid #dbe4f0;
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 14px;
+      background: #f8fafc;
+    }
+
+    .admin-review-card h4 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .admin-review-card p {
+      margin-bottom: 6px;
+      color: #475569;
+      font-size: 14px;
+    }
+
+    .admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn-small {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-approve {
+      background: #059669;
+      color: white;
+    }
+
+    .btn-reject {
+      background: #dc2626;
+      color: white;
+    }
+
+    .btn-delete {
+      background: #334155;
+      color: white;
+    }
+
+    .empty-state {
+      color: #64748b;
+      padding: 12px 0;
+    }
+
+    .note-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e3a8a;
+      padding: 14px 16px;
+      border-radius: 14px;
+      margin-top: 18px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 992px) {
+      .hero,
+      .grid-3,
+      .forms {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .section-top h2 {
+        font-size: 28px;
+      }
+
+      .form-box h3 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container hero">
+      <div>
+        <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 14px; margin-bottom: 12px;">Teacher + School Platform</p>
+        <h1>School ko teacher mile, teacher ko better school mile.</h1>
+        <p>
+          Ye platform private schools aur teachers ke liye banaya gaya hai jahan school vacancy post kar sake,
+          teachers apni profile bana sake, aur anonymous reviews ke through schools ki reality jaan sake.
+        </p>
+        <div class="btn-group">
+          <a href="#jobs" class="btn btn-primary">Teacher Required</a>
+          <a href="#teachers" class="btn btn-outline">Find Teachers</a>
+          <a href="#reviews" class="btn btn-outline">School Reviews</a>
+        </div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="info-card">
+          <h3>For Schools</h3>
+          <p>Vacancies post kijiye aur subject, salary, location ke hisaab se teachers dhoondhiye.</p>
+        </div>
+        <div class="info-card">
+          <h3>For Teachers</h3>
+          <p>Apni teaching profile banaiye aur suitable school opportunities explore kijiye.</p>
+        </div>
+        <div class="info-card">
+          <h3>Privacy First</h3>
+          <p>Anonymous review system me teacher ka naam public me show nahi hoga.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container" style="padding-top: 28px;">
+      <div class="form-box" style="margin-bottom: 30px;">
+        <h3>Admin Login</h3>
+        <p>Sirf admin email se login hone par admin panel dikhaya jayega.</p>
+        <form id="adminLoginForm" class="forms" style="grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="form-group"><input type="email" id="adminEmail" placeholder="Admin Email" required></div>
+          <div class="form-group"><input type="password" id="adminPassword" placeholder="Password" required></div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; grid-column: 1 / -1;">
+            <button type="submit" class="btn" style="background:#4f46e5; color:white;">Admin Login</button>
+            <button type="button" id="adminLogoutBtn" class="btn" style="background:#0f172a; color:white; display:none;">Logout</button>
+          </div>
+        </form>
+        <div id="adminStatus" class="note-box">Abhi admin login nahi hua hai.</div>
+      </div>
+    </div>
+    <div class="container">
+      <section id="jobs">
+        <div class="section-top">
+          <div>
+            <div class="section-label">Section 1</div>
+            <h2>Teacher Required</h2>
+            <p>Schools apni vacancies yahan post kar sakte hain.</p>
+          </div>
+          <button class="btn" style="background:#4f46e5; color:white;">Post a Vacancy</button>
+        </div>
+
+        <div class="grid-3" id="jobsContainer"></div>
+      </section>
+
+      <section id="teachers">
+        <div class="section-top">
+          <div>
+            <div class="section-label">Section 2</div>
+            <h2>Teachers Available for Schools</h2>
+            <p>Schools yahan se teacher profiles dekh sakte hain.</p>
+          </div>
+          <button class="btn" style="background:#4f46e5; color:white;">Create Teacher Profile</button>
+        </div>
+
+        <div class="grid-3" id="teachersContainer"></div>
+      </section>
+
+      <section id="reviews">
+        <div class="section-top">
+          <div>
+            <div class="section-label">Section 3</div>
+            <h2>Anonymous School Reviews</h2>
+            <p>Teachers school ki payment, workload, leave policy aur management behavior par anonymous review de sakte hain.</p>
+          </div>
+        </div>
+
+        <div class="grid-3" id="reviewsContainer"></div>
+      </section>
+
+      <section id="admin-panel" style="display:none;">
+        <div class="section-top">
+          <div>
+            <div class="section-label">Section 4</div>
+            <h2>Admin Panel</h2>
+            <p>Pending reviews ko yahan approve, reject ya delete kiya ja sakta hai.</p>
+          </div>
+          <button class="btn" id="refreshAdminBtn" style="background:#0f172a; color:white;">Refresh Panel</button>
+        </div>
+
+        <div class="forms">
+          <div class="form-box">
+            <h3>Pending Reviews</h3>
+            <p>Ye reviews abhi public nahi dikhne chahiye jab tak admin approve na kare.</p>
+            <div id="pendingReviewsList"></div>
+          </div>
+
+          <div class="form-box">
+            <h3>Approved Reviews</h3>
+            <p>Approved reviews yahan dikhेंगे. Inhe zarurat padne par delete bhi kar sakte ho.</p>
+            <div id="approvedReviewsList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="forms">
+        <div class="form-box">
+          <h3>Post School Vacancy</h3>
+          <p>School vacancy submit karne ke liye basic form.</p>
+          <form id="vacancyForm">
+            <div class="form-group"><input type="text" placeholder="School Name" required></div>
+            <div class="form-group"><input type="text" placeholder="Subject Required" required></div>
+            <div class="form-group"><input type="text" placeholder="Location" required></div>
+            <div class="form-group"><input type="text" placeholder="Salary Offered" required></div>
+            <div class="form-group"><textarea placeholder="Other Details"></textarea></div>
+            <button type="submit" class="btn full-btn">Submit Vacancy</button>
+          </form>
+          <div class="note-box"></div>
+        </div>
+
+        <div class="form-box">
+          <h3>Submit Anonymous Review</h3>
+          <p>रिव्यू पब्लिक होगा लेकिन, रिव्यू देने वाले की जानकारी सार्वजनिक नहीं होगी </p>
+          <form id="reviewForm">
+            <div class="form-group"><input type="text" placeholder="School Name" required></div>
+            <div class="form-group">
+              <select required>
+                <option value="">Payment On Time?</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select required>
+                <option value="">Workload</option>
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select required>
+                <option value="">Leave Policy</option>
+                <option>Good</option>
+                <option>Average</option>
+                <option>Poor</option>
+              </select>
+            </div>
+            <div class="form-group"><textarea placeholder="Write your review" required></textarea></div>
+            <button type="submit" class="btn full-btn">Submit Review</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div>
+        <h3>EduHire Review</h3>
+        <p class="muted">Teacher-school hiring and review platform</p>
+      </div>
+      <div class="footer-links">
+        <a href="#jobs">Jobs</a>
+        <a href="#teachers">Teachers</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    // Firebase setup
+    // Step 1: Firebase project banao
+    // Step 2: Apna config niche paste karo
+    // Step 3: Firestore Database enable karo
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      serverTimestamp,
+      getDocs,
+      query,
+      where,
+      doc,
+      updateDoc,
+      deleteDoc
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    // Yahan apna real admin email daalo
+    const ADMIN_EMAIL = 'admin@example.com';
+
+    const jobs = [
+      {
+        school: "Bright Future Public School",
+        location: "Jaipur",
+        subject: "Mathematics Teacher",
+        salary: "₹25,000 - ₹35,000",
+        type: "Full Time"
+      },
+      {
+        school: "Sunrise Academy",
+        location: "Bikaner",
+        subject: "Science Teacher",
+        salary: "₹20,000 - ₹30,000",
+        type: "Full Time"
+      },
+      {
+        school: "Oxford Senior School",
+        location: "Jodhpur",
+        subject: "English Teacher",
+        salary: "₹18,000 - ₹28,000",
+        type: "Part Time"
+      }
+    ];
+
+    const teachers = [
+      {
+        title: "Physics Teacher",
+        experience: "3 Years Experience",
+        location: "Bikaner",
+        expectedSalary: "₹30,000",
+        mode: "Offline / Online"
+      },
+      {
+        title: "Chemistry Teacher",
+        experience: "5 Years Experience",
+        location: "Jaipur",
+        expectedSalary: "₹35,000",
+        mode: "Offline"
+      },
+      {
+        title: "Primary Teacher",
+        experience: "2 Years Experience",
+        location: "Jodhpur",
+        expectedSalary: "₹22,000",
+        mode: "Offline / Online"
+      }
+    ];
+
+    const reviews = [
+      {
+        school: "ABC School",
+        rating: 4,
+        payment: "On Time",
+        workload: "Medium",
+        leaves: "Average",
+        issue: "Holiday ke din kabhi-kabhi call karte hain"
+      },
+      {
+        school: "Sharda Public School",
+        rating: 2,
+        payment: "Late",
+        workload: "High",
+        leaves: "Poor",
+        issue: "Work pressure zyada hai"
+      },
+      {
+        school: "Modern Children Academy",
+        rating: 5,
+        payment: "On Time",
+        workload: "Balanced",
+        leaves: "Good",
+        issue: "Management supportive hai"
+      }
+    ];
+
+    function stars(count) {
+      return "★".repeat(count) + "☆".repeat(5 - count);
+    }
+
+    function renderJobs() {
+      const container = document.getElementById('jobsContainer');
+      jobs.forEach(job => {
+        container.innerHTML += `
+          <div class="card">
+            <span class="tag tag-blue">${job.type}</span>
+            <h3>${job.subject}</h3>
+            <p class="muted">${job.school}</p>
+            <ul>
+              <li><strong>Location:</strong> ${job.location}</li>
+              <li><strong>Salary:</strong> ${job.salary}</li>
+            </ul>
+            <button class="btn full-btn">Apply Now</button>
+          </div>
+        `;
+      });
+    }
+
+    function renderTeachers() {
+      const container = document.getElementById('teachersContainer');
+      teachers.forEach(teacher => {
+        container.innerHTML += `
+          <div class="card">
+            <h3>${teacher.title}</h3>
+            <p class="muted">${teacher.experience}</p>
+            <ul>
+              <li><strong>Location:</strong> ${teacher.location}</li>
+              <li><strong>Expected Salary:</strong> ${teacher.expectedSalary}</li>
+              <li><strong>Mode:</strong> ${teacher.mode}</li>
+            </ul>
+            <button class="btn full-btn">Contact Teacher</button>
+          </div>
+        `;
+      });
+    }
+
+    function renderReviews() {
+      const container = document.getElementById('reviewsContainer');
+      container.innerHTML = '';
+      reviews.forEach(review => {
+        container.innerHTML += `
+          <div class="card">
+            <span class="tag tag-green">Verified Anonymous Teacher</span>
+            <h3>${review.school}</h3>
+            <div class="stars">${stars(review.rating)}</div>
+            <ul>
+              <li><strong>Payment:</strong> ${review.payment}</li>
+              <li><strong>Workload:</strong> ${review.workload}</li>
+              <li><strong>Leave Policy:</strong> ${review.leaves}</li>
+              <li><strong>Comment:</strong> ${review.issue}</li>
+            </ul>
+          </div>
+        `;
+      });
+    }
+
+    function updateAdminVisibility(user) {
+      const adminPanel = document.getElementById('admin-panel');
+      const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+      const adminStatus = document.getElementById('adminStatus');
+
+      if (user && user.email === ADMIN_EMAIL) {
+        adminPanel.style.display = 'block';
+        adminLogoutBtn.style.display = 'inline-block';
+        adminStatus.innerHTML = `Admin login successful: <strong>${user.email}</strong>`;
+        loadAdminReviews();
+      } else {
+        adminPanel.style.display = 'none';
+        adminLogoutBtn.style.display = 'none';
+        adminStatus.innerHTML = 'Abhi admin login nahi hua hai.';
+      }
+    }
+
+    async function loadAdminReviews() {
+      const pendingBox = document.getElementById('pendingReviewsList');
+      const approvedBox = document.getElementById('approvedReviewsList');
+      pendingBox.innerHTML = '<p class="empty-state">Loading pending reviews...</p>';
+      approvedBox.innerHTML = '<p class="empty-state">Loading approved reviews...</p>';
+
+      try {
+        const pendingQuery = query(collection(db, 'reviews'), where('status', '==', 'pending'));
+        const approvedQuery = query(collection(db, 'reviews'), where('status', '==', 'approved'));
+
+        const pendingSnapshot = await getDocs(pendingQuery);
+        const approvedSnapshot = await getDocs(approvedQuery);
+
+        pendingBox.innerHTML = '';
+        approvedBox.innerHTML = '';
+
+        if (pendingSnapshot.empty) {
+          pendingBox.innerHTML = '<p class="empty-state">Koi pending review nahi hai.</p>';
+        } else {
+          pendingSnapshot.forEach((reviewDoc) => {
+            const data = reviewDoc.data();
+            pendingBox.innerHTML += `
+              <div class="admin-review-card">
+                <h4>${data.schoolName || 'Unknown School'}</h4>
+                <p><strong>Payment:</strong> ${data.payment || '-'}</p>
+                <p><strong>Workload:</strong> ${data.workload || '-'}</p>
+                <p><strong>Leave Policy:</strong> ${data.leavePolicy || '-'}</p>
+                <p><strong>Comment:</strong> ${data.comment || '-'}</p>
+                <p><strong>Status:</strong> ${data.status || 'pending'}</p>
+                <div class="admin-actions">
+                  <button class="btn-small btn-approve" onclick="approveReview('${reviewDoc.id}')">Approve</button>
+                  <button class="btn-small btn-reject" onclick="rejectReview('${reviewDoc.id}')">Reject</button>
+                  <button class="btn-small btn-delete" onclick="deleteReview('${reviewDoc.id}')">Delete</button>
+                </div>
+              </div>
+            `;
+          });
+        }
+
+        if (approvedSnapshot.empty) {
+          approvedBox.innerHTML = '<p class="empty-state">Abhi tak koi approved review nahi hai.</p>';
+        } else {
+          approvedSnapshot.forEach((reviewDoc) => {
+            const data = reviewDoc.data();
+            approvedBox.innerHTML += `
+              <div class="admin-review-card">
+                <h4>${data.schoolName || 'Unknown School'}</h4>
+                <p><strong>Payment:</strong> ${data.payment || '-'}</p>
+                <p><strong>Workload:</strong> ${data.workload || '-'}</p>
+                <p><strong>Leave Policy:</strong> ${data.leavePolicy || '-'}</p>
+                <p><strong>Comment:</strong> ${data.comment || '-'}</p>
+                <p><strong>Status:</strong> ${data.status || 'approved'}</p>
+                <div class="admin-actions">
+                  <button class="btn-small btn-delete" onclick="deleteReview('${reviewDoc.id}')">Delete</button>
+                </div>
+              </div>
+            `;
+          });
+        }
+      } catch (error) {
+        console.error('Error loading admin reviews:', error);
+        pendingBox.innerHTML = '<p class="empty-state">Pending reviews load nahi ho pa rahe.</p>';
+        approvedBox.innerHTML = '<p class="empty-state">Approved reviews load nahi ho pa rahe.</p>';
+      }
+    }
+
+    window.approveReview = async function(reviewId) {
+      try {
+        await updateDoc(doc(db, 'reviews', reviewId), { status: 'approved' });
+        alert('Review approved successfully!');
+        loadAdminReviews();
+      } catch (error) {
+        console.error('Approve error:', error);
+        alert('Review approve nahi hua.');
+      }
+    };
+
+    window.rejectReview = async function(reviewId) {
+      try {
+        await updateDoc(doc(db, 'reviews', reviewId), { status: 'rejected' });
+        alert('Review rejected successfully!');
+        loadAdminReviews();
+      } catch (error) {
+        console.error('Reject error:', error);
+        alert('Review reject nahi hua.');
+      }
+    };
+
+    window.deleteReview = async function(reviewId) {
+      try {
+        await deleteDoc(doc(db, 'reviews', reviewId));
+        alert('Review deleted successfully!');
+        loadAdminReviews();
+      } catch (error) {
+        console.error('Delete error:', error);
+        alert('Review delete nahi hua.');
+      }
+    };
+
+    renderJobs();
+    renderTeachers();
+    renderReviews();
+
+    document.getElementById('vacancyForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const inputs = this.querySelectorAll('input, textarea');
+      const schoolName = inputs[0].value.trim();
+      const subjectRequired = inputs[1].value.trim();
+      const location = inputs[2].value.trim();
+      const salaryOffered = inputs[3].value.trim();
+      const otherDetails = inputs[4].value.trim();
+
+      try {
+        await addDoc(collection(db, 'vacancies'), {
+          schoolName,
+          subjectRequired,
+          location,
+          salaryOffered,
+          otherDetails,
+          createdAt: serverTimestamp()
+        });
+
+        alert('Vacancy form submitted successfully and saved in Firebase!');
+        this.reset();
+      } catch (error) {
+        console.error('Error saving vacancy:', error);
+        alert('Vacancy save nahi hui. Firebase config ya Firestore rules check karo.');
+      }
+    });
+
+    document.getElementById('reviewForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const schoolName = this.querySelector('input').value.trim();
+      const selects = this.querySelectorAll('select');
+      const payment = selects[0].value;
+      const workload = selects[1].value;
+      const leavePolicy = selects[2].value;
+      const comment = this.querySelector('textarea').value.trim();
+
+      try {
+        await addDoc(collection(db, 'reviews'), {
+          schoolName,
+          payment,
+          workload,
+          leavePolicy,
+          comment,
+          reviewerType: 'Verified Anonymous Teacher',
+          status: 'pending',
+          createdAt: serverTimestamp()
+        });
+
+        alert('Anonymous review submitted and saved in Firebase!');
+        this.reset();
+        loadAdminReviews();
+      } catch (error) {
+        console.error('Error saving review:', error);
+        alert('Review save nahi hua. Firebase config ya Firestore rules check karo.');
+      }
+    });
+
+    document.getElementById('refreshAdminBtn').addEventListener('click', loadAdminReviews);
+
+    document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('adminEmail').value.trim();
+      const password = document.getElementById('adminPassword').value.trim();
+
+      try {
+        const result = await signInWithEmailAndPassword(auth, email, password);
+        if (result.user.email !== ADMIN_EMAIL) {
+          await signOut(auth);
+          alert('Ye admin account nahi hai.');
+          return;
+        }
+        alert('Admin login successful!');
+        this.reset();
+      } catch (error) {
+        console.error('Admin login error:', error);
+        alert('Login failed. Email, password ya Firebase Auth setup check karo.');
+      }
+    });
+
+    document.getElementById('adminLogoutBtn').addEventListener('click', async function() {
+      try {
+        await signOut(auth);
+        alert('Admin logout successful!');
+      } catch (error) {
+        console.error('Logout error:', error);
+        alert('Logout nahi ho paya.');
+      }
+    });
+
+    onAuthStateChanged(auth, (user) => {
+      updateAdminVisibility(user);
+    });
+  </script>
+</body>
+</html>
